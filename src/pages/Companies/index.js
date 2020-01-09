@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCompanies } from './actions';
 import { SingleCompanie } from '../../components';
 import { LinkBlock } from '../../helpers/styles';
+import { logout } from '../../store/Routers/action';
 import * as S from './Companies.styles';
 
 export const Companies = () => {
@@ -19,14 +20,15 @@ export const Companies = () => {
   return (
       <>
         <LinkBlock to='/profile'>Go to Profile</LinkBlock>
-        <LinkBlock to='/' onClick={()=> {localStorage.removeItem('access_token')}}>Log Out</LinkBlock>
+        <div onClick={() => {localStorage.removeItem('access_token')}}>Log out</div>
           <S.FlexWrapper>
           {companies && companies.map(el=> (
               <SingleCompanie to={`/companies/${el.id}`}
                   key={el.id}
-                  name={el.name} 
+                  name={el.name}
                   address={el.address}/>
           ))}
+          <div>Loggggooogogogoo</div>
           </S.FlexWrapper>
       </>
   )

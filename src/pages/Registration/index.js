@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import * as S from './Registration.styles';
 import { validator } from '../../helpers/validator';
-import { sighnUpUser,  } from './actions';
+import { signUpUser,  } from './actions';
 import { getCategories } from '../../store/Categories/actions';
 import { getProducts } from '../../store/Products/actions';
 
@@ -37,7 +37,7 @@ export const Registration = (props) => {
   const handleSubmit = (values) => {
       values.company = {...values};
       console.log(values);
-    dispatch(sighnUpUser(values));
+    dispatch(signUpUser(values));
     const { history } = props;
     history.push('/login');
   }

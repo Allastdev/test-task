@@ -13,7 +13,7 @@ import {
 import { auth } from "../store/Routers/action";
 
 class Index extends Component {
-  
+ 
   render(){
     const { userProfile } = this.props;
     const { routers } = this.props;
@@ -21,7 +21,7 @@ class Index extends Component {
     let booleanValue  = false;
 
     if (localStorage.getItem('access_token') && routers.status){
-      booleanValue = false;
+      booleanValue = true;
       auth();
     } else if (localStorage.getItem('access_token') && !routers.status) {
       booleanValue = true;
@@ -37,7 +37,8 @@ class Index extends Component {
               <Route path='/companies/:id' component = { Companie }/>
               <Route path='/profile' component = { Profile }/>
               {userProfile.role === 'user' ? <Route path='/reviews' component = { Reviews }/> : null}
-            </Switch> :
+            </Switch> 
+            :
             <Switch>
                 <Route exact path='/' component={ Login }/>
                 <Route path='/registration' component={Registration}/>

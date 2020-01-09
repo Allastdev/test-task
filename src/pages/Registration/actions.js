@@ -1,6 +1,6 @@
 import FetchApi from '../../helpers/fetchApi';
 
-export const sighnUpUser = (values) => async dispatch => {
+export const signUpUser = (values) => async dispatch => {
   console.log('values', values);
   try{
     const response = await FetchApi.post('http://10.0.13.6:3000/users', {

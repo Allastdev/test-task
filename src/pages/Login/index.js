@@ -26,8 +26,8 @@ export const Login = (props) => {
 
   const handleSubmit = (values) => {
     dispatch(loggedIn(values));
-    const { history } = props;
-    history.push('/');
+    // const { history } = props;
+    // history.push('/');
   };
 
   return (
