@@ -10,8 +10,7 @@ export const routers = (state = initialState, action) => {
         status: action.value
       }
     }
-    case 'LOGOUT': {
-      console.log('logout');
+    case 'LOG_OUT': {
       return {
         ...state,
         status: action.value

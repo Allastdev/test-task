@@ -9,7 +9,6 @@ import * as S from './Companies.styles';
 
 export const Companies = () => {
   const dispatch = useDispatch();
-
   useEffect(()=> {
     dispatch(getCompanies());
   }, []);
@@ -20,7 +19,7 @@ export const Companies = () => {
   return (
       <>
         <LinkBlock to='/profile'>Go to Profile</LinkBlock>
-        <div onClick={() => {localStorage.removeItem('access_token')}}>Log out</div>
+        <div onClick={() => dispatch(logout())}>Log out</div>
           <S.FlexWrapper>
           {companies && companies.map(el=> (
               <SingleCompanie to={`/companies/${el.id}`}
@@ -28,7 +27,6 @@ export const Companies = () => {
                   name={el.name}
                   address={el.address}/>
           ))}
-          <div>Loggggooogogogoo</div>
           </S.FlexWrapper>
       </>
   )

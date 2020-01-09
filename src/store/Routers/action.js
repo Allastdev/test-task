@@ -3,15 +3,10 @@ export const auth = () => ({
     value: true,
 });
 
-// export const logout = () => ({
-//     type: 'LOGOROUTERS_RENDERUT',
-//     value: false,
-// })
-
 export const logout = () => dispatch => {
-  console.log('hey hey hey');
+  localStorage.removeItem('access_token');
   dispatch ({
-      type: 'test',
+      type: 'LOG_OUT',
       value: false,
     })
 }
