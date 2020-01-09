@@ -10,33 +10,33 @@ import { loggedIn } from './actions';
 export const Login = (props) => {
   const dispatch = useDispatch();
 
-  const loginState = useSelector(state => state.login)
-  console.log('loginState', loginState);
+  const loginState = useSelector( state => state.login);
+  
   const handleValidate = (values) => {
-    const { 
+    const {
       isEmailValid,
       isPasswordValid,
-      errors
+      errors,
     } = validator;
 
     isEmailValid(values.email);
     isPasswordValid(values.password);
     return errors;
-  }
- 
+  };
+
   const handleSubmit = (values) => {
     dispatch(loggedIn(values));
     const { history } = props;
     history.push('/');
-  }
+  };
 
-  return(
+  return (
     <S.Contained>
       <h2>Login</h2>
       <S.Form
         validateOnChange={false}
         validateOnBlur={false}
-        initialValues={{email: '', password: ''}}
+        initialValues={{ email: '', password: '' }}
         validate={(values) => handleValidate(values)}
         onSubmit={(values) => {
           handleSubmit(values);
@@ -71,14 +71,14 @@ export const Login = (props) => {
             {errors.password && <S.Error>{errors.password}</S.Error>}
             <S.SignIn
               value='Sign In'
-              type='submit' 
+              type='submit'
             />
-            Haven't registered yet? <Link to='/registration'>Sign up</Link>
+            Haven't registered yet?
+            <Link to='/registration'>Sign up</Link>
           </S.SimpleForm>
         )}
       </S.Form>
       {loginState.errorMessage && <div>loginState.errorMessage</div>}
-    </S.Contained> 
-  )
-}
-
+    </S.Contained>
+  );
+};

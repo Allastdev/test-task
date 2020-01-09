@@ -22,6 +22,11 @@
         "react"
     ],
     "rules": {
-        
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/no-unescaped-entities": ["error", {"forbid": [">", "}"]}],
+        "import/prefer-default-export": "off",
+        "jsx-quotes": ["error", "prefer-single"],
+        "arrow-parens": [2, "off"],
+        "prefer-destructuring": ["error", {"VariableDeclarator": {"object": false}}]
     }
 }
