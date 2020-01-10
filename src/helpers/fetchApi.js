@@ -19,14 +19,16 @@ export default class FetchApi {
       return await FetchApi.request(path, 'DELETE', data, options);
     }
   
-    static async request(path, method, data, options = {}) {
+    static async request(path, method, data, options = {},) {
       const token = localStorage.getItem('access_token');
-  
+      
       let headers = new Headers({
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       });
+
+      // `${bool}` ? headers['Authorization'] = `Bearer ${token}` : null
   
       const myInit = {
         method,

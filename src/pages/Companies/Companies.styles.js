@@ -11,3 +11,10 @@ export const FlexWrapper = styled.div`
 export const Header = styled.h1`
     text-align: center;
 `
+export const Conatiner = styled.div`
+    max-width: 1270px;
+    margin: auto;
+`
+export const Logout = styled.div`
+    margin-left: 24px;
+`

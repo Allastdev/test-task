@@ -11,7 +11,7 @@ import { LinkBlock } from '../../helpers/styles';
 
 import * as S from '../../pages/Registration/Registration.styles';
 
-export const Profile = (props) => {
+export const Profile = () => {
   const dispatch = useDispatch();
 
   useEffect(()=> {
@@ -25,7 +25,6 @@ export const Profile = (props) => {
   const productsState = useSelector(state => state.products);
 
   const { userProfile }  = userProfileState;
-  console.log('userProfile', userProfile);
 
   const handleValidate = (values) => {
     const { 
@@ -47,7 +46,7 @@ export const Profile = (props) => {
 
   return(
       <>
-        <LinkBlock to='/companies'>Go to Companies</LinkBlock>
+        <LinkBlock to='/'>Go to Companies</LinkBlock>
         <S.Wrapper>
             <h1>You can edit your Profile info</h1>
             <S.Form
@@ -127,15 +126,23 @@ export const Profile = (props) => {
                         <S.Select onChange={handleChange} name='categories_id'>
                              <option>Please choose categories</option>
                         {categoriesState.categories && categoriesState.categories.map(el => (
-                            <option key={el.id} value={el.id}>{el.name}</option>
+                            <option 
+                                key={el.id} 
+                                value={el.id}>
+                                    {el.name}
+                            </option>
                         ))}
                         </S.Select>
                     
                         <S.Select onChange={handleChange} name='products_id'>
                              <option>Please choose products</option>
-                        {productsState.products && productsState.products.map(el => (
-                            <option key={el.id} value={el.id}>{el.name}</option>
-                        ))}
+                            {productsState.products && productsState.products.map(el => (
+                                <option 
+                                  key={el.id} 
+                                  value={el.id}>
+                                    {el.name}
+                                </option>
+                            ))}
                         </S.Select>
                     </>
                         :

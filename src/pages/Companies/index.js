@@ -16,22 +16,25 @@ export const Companies = () => {
 
   const companiesState = useSelector((state) => state.companies);
   const { companies, error } = companiesState;
-
+  const logOut = () => {
+    dispatch(logout())
+  }
   return (
       <>
         <LinkBlock to='/profile'>Go to Profile</LinkBlock>
-        <div onClick={() => dispatch(logout())}>Log out</div>
-        <S.Header>Companies</S.Header>
-          <S.FlexWrapper>
-          {companies && companies.map(el=> (
-              <SingleCompanie to={`/companies/${el.id}`}
-                  key={el.id}
-                  name={el.name}
-                  address={el.address}/>
-          ))}
-          </S.FlexWrapper>
-          {error && <div>{error}</div>}
-      </>
+        <S.Logout onClick={logOut}>Log out</S.Logout>
+        <S.Conatiner>
+          <S.Header>Companies</S.Header>
+            <S.FlexWrapper>
+            {companies && companies.map(el=> (
+                <SingleCompanie 
+                    key={el.id}
+                    elem={el}/>
+            ))}
+            </S.FlexWrapper>
+            {error && <div>{error}</div>}
+        </S.Conatiner>
+      </>      
   )
 }
 
