@@ -1,6 +1,7 @@
 
 const initialState = {
-    companies: []
+    companies: [],
+    error: '',
   }
     
   export const profile = (state=initialState, action) => {
@@ -9,6 +10,12 @@ const initialState = {
         return {
           ...state,
           companies: action.data
+        }
+      }
+      case 'GET_COMPANIES_ERROR': {
+        return {
+          ...state, 
+          error: action.data.message,
         }
       }
       default: {

@@ -1,6 +1,7 @@
 
 const initialState = {
-    userProfile: []
+    userProfile: [],
+    error: ''
   }
     
   export const userProfile = (state=initialState, action) => {
@@ -9,6 +10,12 @@ const initialState = {
         return {
           ...state,
           userProfile: action.data
+        }
+      }
+      case "USER_CREDENTIALS_ERROR": {
+        return {
+          ...state,
+          error: action.data.message,
         }
       }
       default: {

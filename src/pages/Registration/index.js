@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import * as S from './Registration.styles';
-import { validator } from '../../helpers/validator';
 import { signUpUser,  } from './actions';
 import { getCategories } from '../../store/Categories/actions';
 import { getProducts } from '../../store/Products/actions';
+import { validator } from '../../helpers/validator';
 
 
 export const Registration = (props) => {
@@ -35,9 +35,11 @@ export const Registration = (props) => {
   }
  
   const handleSubmit = (values) => {
-      values.company = {...values};
-      console.log(values);
-    dispatch(signUpUser(values));
+    if(values.role === 'user'){
+      dispatch(signUpUser(values, 'users'));
+    }else if(values.role === 'company'){
+      dispatch(signUpUser(values, 'company'));
+    }
     const { history } = props;
     history.push('/login');
   }
@@ -49,7 +51,7 @@ export const Registration = (props) => {
         validateOnChange={false}
         validateOnBlur={false}
         initialValues={{
-          email: '', 
+          email: '',
           password: '', 
           username: '', 
           role: '', 

@@ -9,17 +9,19 @@ import * as S from './Companies.styles';
 
 export const Companies = () => {
   const dispatch = useDispatch();
+  
   useEffect(()=> {
     dispatch(getCompanies());
   }, []);
 
   const companiesState = useSelector((state) => state.companies);
-  const { companies } = companiesState;
+  const { companies, error } = companiesState;
 
   return (
       <>
         <LinkBlock to='/profile'>Go to Profile</LinkBlock>
         <div onClick={() => dispatch(logout())}>Log out</div>
+        <S.Header>Companies</S.Header>
           <S.FlexWrapper>
           {companies && companies.map(el=> (
               <SingleCompanie to={`/companies/${el.id}`}
@@ -28,6 +30,7 @@ export const Companies = () => {
                   address={el.address}/>
           ))}
           </S.FlexWrapper>
+          {error && <div>{error}</div>}
       </>
   )
 }

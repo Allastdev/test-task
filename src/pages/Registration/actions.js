@@ -1,20 +1,11 @@
 import FetchApi from '../../helpers/fetchApi';
 
-export const signUpUser = (values) => async dispatch => {
+export const signUpUser = (values, type) => async dispatch => {
   console.log('values', values);
+  console.log('url', `http://10.0.13.6:3000/${type}`)
   try{
-    const response = await FetchApi.post('http://10.0.13.6:3000/users', {
-        email: values.email,
-        password: values.password,
-        username: values.username,
-        role: values.role,
-        company: values.role === 'company' ?  {
-          company_name: values.company_name,
-          company_address: values.company_address,
-          categories_id: values.categories_id,
-          products_id: values.products_id,
-        } : null
-    });
+    const response = await FetchApi.post(`http://10.0.13.6:3000/${type}`, values);
+
     console.log('response', response);
 
     dispatch({

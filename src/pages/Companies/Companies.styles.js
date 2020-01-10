@@ -8,3 +8,6 @@ export const FlexWrapper = styled.div`
     width: 90%;
     margin: 60px auto;
 `
+export const Header = styled.h1`
+    text-align: center;
+`

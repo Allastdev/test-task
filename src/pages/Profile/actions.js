@@ -20,12 +20,14 @@ export const editUserInfo = (values) => async dispatch => {
         password: values.password, 
         email: values.email,
       });
-      console.log('response', response);
      dispatch({
        type: 'USER_CREDENTIALS',
      })
    }catch(e){
-     console.log(e);
+    dispatch({
+      type: 'USER_CREDENTIALS_ERROR',
+      data: e
+    })
    }
   }
   
