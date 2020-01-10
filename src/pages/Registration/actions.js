@@ -1,6 +1,7 @@
 import FetchApi from '../../helpers/fetchApi';
 
 export const signUpUser = (values, type) => async dispatch => {
+  console.log('type', `${process.env.REACT_APP_API_URL}/${type}`);
   try{
     const response = await FetchApi.post(false, `${process.env.REACT_APP_API_URL}/${type}`);
     dispatch({ 
@@ -9,8 +10,8 @@ export const signUpUser = (values, type) => async dispatch => {
     })
   }catch(e){
     dispatch({
-        type: 'SIGN_UP_USER_ERROR_MESSAGE',
-        data: e.messages,
+        type: 'SIGN_UP_USER_ERROR',
+        data: e,
     })
   }
 }

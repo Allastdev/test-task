@@ -11,10 +11,10 @@ const initialState = {
           register_response: action.data
         }
       }
-      case 'SIGN_UP_USER_ERROR_MESSAGE': {
+      case 'SIGN_UP_USER_ERROR': {
         return {
           ...state,
-          errorMessage: action.data,
+          errorMessage: action.data.message,
         }
       }
       default: {

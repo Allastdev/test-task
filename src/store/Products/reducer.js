@@ -1,6 +1,7 @@
 
 const initialState = {
     products: '',
+    error: ''
   }
     
   export const products = (state=initialState, action) => {
@@ -10,6 +11,12 @@ const initialState = {
           ...state,
           products: action.data
         }
+      }
+      case "GET_PRODUCTS_ERROR": {
+        return {
+          ...state,
+          error: action.data.message,
+        } 
       }
       default: {
         return state

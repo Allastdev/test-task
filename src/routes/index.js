@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import connect from "react-redux/es/connect/connect";
 
@@ -15,9 +16,11 @@ import { auth } from "../store/Routers/action";
 class Index extends Component {
  
   render(){
+    const { registerState: { register_response } } = this.props;
     const { userProfile } = this.props;
     const { routers } = this.props;
-
+    
+    console.log('register_response', register_response)
     let booleanValue  = false;
 
     if (localStorage.getItem('access_token') && routers.status){
@@ -53,6 +56,7 @@ class Index extends Component {
 const mapStateToProps = (state) => ({
   routers: state.routers,
   userProfile: state.userProfile,
+  registerState: state.registration,
 
 });
 
