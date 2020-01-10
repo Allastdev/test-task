@@ -1,9 +1,9 @@
 import FetchApi from '../../helpers/fetchApi';
 
 export const loggedIn = (values) => async dispatch =>  {
-    console.log('process_env', process.env)
+    console.log('API_rool', process.env)
     try{    
-        const response = await FetchApi.post(`${process.env.local_url}/auth/login`, {
+        const response = await FetchApi.post(`${process.env.REACT_APP_API_URL}/auth/login`, {
             email: values.email,
             password: values.password,
         })

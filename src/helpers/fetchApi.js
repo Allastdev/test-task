@@ -1,25 +1,25 @@
 export default class FetchApi {
-    static async post(path, data, options = {}) {
-      return await FetchApi.request(path, 'POST', data, options);
+    static async post(bool, path, data, options = {}) {
+      return await FetchApi.request(bool, path, 'POST', data, options);
     }
   
-    static async get(path, data, options = {}) {
-      return await FetchApi.request(path, 'GET', data, options);
+    static async get(bool, path, data, options = {}) {
+      return await FetchApi.request(bool, path, 'GET', data, options);
     }
   
-    static async put(path, data, options = {}) {
-      return await FetchApi.request(path, 'PUT', data, options);
+    static async put(bool, path, data, options = {}) {
+      return await FetchApi.request(bool, path, 'PUT', data, options);
     }
   
-    static async patch(path, data, options = {}) {
-      return await FetchApi.request(path, 'PATCH', data, options);
+    static async patch(bool, path, data, options = {}) {
+      return await FetchApi.request(bool, path, 'PATCH', data, options);
     }
   
-    static async delete(path, data, options = {}) {
-      return await FetchApi.request(path, 'DELETE', data, options);
+    static async delete(bool, path, data, options = {}) {
+      return await FetchApi.request(bool, path, 'DELETE', data, options);
     }
   
-    static async request(path, method, data, options = {},) {
+    static async request(bool, path, method, data, options = {},) {
       const token = localStorage.getItem('access_token');
       
       let headers = new Headers({
