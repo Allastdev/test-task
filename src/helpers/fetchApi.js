@@ -1,3 +1,4 @@
+
 export default class FetchApi {
     static async post(bool, path, data, options = {}) {
       return await FetchApi.request(bool, path, 'POST', data, options);
@@ -21,14 +22,15 @@ export default class FetchApi {
   
     static async request(bool, path, method, data, options = {},) {
       const token = localStorage.getItem('access_token');
-      
+
       let headers = new Headers({
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
       });
 
-      // `${bool}` ? headers['Authorization'] = `Bearer ${token}` : null
+      if(bool){
+        headers.append('Authorization', `Bearer ${token}`);
+      }
   
       const myInit = {
         method,

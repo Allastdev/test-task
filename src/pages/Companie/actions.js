@@ -2,7 +2,7 @@ import FetchApi from '../../helpers/fetchApi';
 
 export const getCompanie = (id) => async dispatch =>  {
     try{    
-        const response = await FetchApi.get(`http://10.0.13.6:3000/companies/${id}`)
+        const response = await FetchApi.get(true, `${process.env.REACT_APP_API_URL}/companies/${id}`)
         dispatch({
             type: 'GET_SINGLE_COMPANIE',
             data: response,

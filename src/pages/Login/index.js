@@ -11,6 +11,7 @@ export const Login = (props) => {
   const dispatch = useDispatch();
 
   const loginState = useSelector( state => state.login);
+  console.log('errorMessage', loginState.errorMessage);
   
   const handleValidate = (values) => {
     const {
@@ -76,7 +77,7 @@ export const Login = (props) => {
           </S.SimpleForm>
         )}
       </S.Form>
-      {loginState.errorMessage && <div>loginState.errorMessage</div>}
+        {loginState.errorMessage && <S.ErrorMessage>{loginState.errorMessage}</S.ErrorMessage>}
     </S.Contained>
   );
 };

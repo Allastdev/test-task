@@ -75,3 +75,8 @@ export const SignIn = styled.input`
     background-color: #3434e8;
   }
 `
+
+export const ErrorMessage = styled.div`
+  margin-top: 10px;
+  text-align: center;
+`
