@@ -7,3 +7,4 @@ export const localStorageGet = (key, isObj) => {
 export const localStorageRemove = (key) => {
   localStorage.removeItem(key);
 }
+

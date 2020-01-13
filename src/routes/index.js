@@ -19,7 +19,8 @@ class Index extends Component {
     const { registerState: { register_response } } = this.props;
     const { userProfile } = this.props;
     const { routers } = this.props;
-    
+    const { loginState: { logged_role } } = this.props;
+    console.log('logged_role', logged_role)
     console.log('register_response', register_response)
     let booleanValue  = false;
 
@@ -36,7 +37,7 @@ class Index extends Component {
         {
           booleanValue ?
             <Switch>
-              <Route exact path='/' component={ Companies }/>
+              <Route exact path='/' component={ logged_role === 'user' ? Companies : Reviews }/>
               <Route path='/companies/:id' component = { Companie }/>
               <Route path='/profile' component = { Profile }/>
               {userProfile.role === 'user' ? <Route path='/reviews' component = { Reviews }/> : null}
@@ -57,7 +58,7 @@ const mapStateToProps = (state) => ({
   routers: state.routers,
   userProfile: state.userProfile,
   registerState: state.registration,
-
+  loginState: state.login
 });
 
 export default connect(mapStateToProps, null)(Index);

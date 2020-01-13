@@ -13,6 +13,8 @@ export const Registration = (props) => {
   const dispatch = useDispatch();
   const categoriesState = useSelector(state => state.categories);
   const productsState = useSelector(state => state.products);
+  const registrationState = useSelector(state => state.registration);
+  const { errorMessage } = registrationState;
   
 
   useEffect(() => {
@@ -36,17 +38,18 @@ export const Registration = (props) => {
  
   const handleSubmit = (values) => {
     if(values.role === 'user'){
-      dispatch(signUpUser(values, 'users'));
+      dispatch(signUpUser(values));
     }else if(values.role === 'company'){
-      dispatch(signUpUser(values, 'company'));
+      dispatch(signUpUser(values));
     }
     const { history } = props;
-    history.push('/login');
+    errorMessage.length > 0 ?  history.push('/') : history.push('/login');
   }
 
   return(
     <S.Contained>
       <h2>Registration</h2>
+      <div>{ errorMessage }</div>
       <S.Form
         validateOnChange={false}
         validateOnBlur={false}
@@ -55,10 +58,13 @@ export const Registration = (props) => {
           password: '', 
           username: '', 
           role: '', 
-          company_name: '', 
-          company_address: '', 
-          categories_id: '', 
-          products_id: ''}}
+          company: {
+            company_name: '', 
+            company_address: '', 
+            categories_id: '', 
+            products_id: ''
+          }
+          }}
         validate={(values) => handleValidate(values)}
         onSubmit={(values) => {
           handleSubmit(values);
@@ -112,7 +118,7 @@ export const Registration = (props) => {
                   name='company_name'
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.company_name}
+                  value={values.company.company_name}
                   errBorder={errors.company_name}
                 />  
                  <S.Input
@@ -121,17 +127,17 @@ export const Registration = (props) => {
                   name='company_address'
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.company_address}
+                  value={values.company.company_address}
                   errBorder={errors.company_address}
                 />  
-                <S.Select onChange={handleChange} name='categories_id'>
+                <S.Select onChange={handleChange} name='categories_id' value={values.company.categories_id}>
                   <option>Please choose categories</option>
                   {categoriesState.categories && categoriesState.categories.map(el => (
                     <option key={el.id} value={el.id}>{el.name}</option>
                   ))}
                 </S.Select>
               
-                <S.Select onChange={handleChange} name='products_id'>
+                <S.Select onChange={handleChange} name='products_id' value={values.company.products_id}>
                   <option>Please choose products</option>
                   {productsState.products && productsState.products.map(el => (
                     <option key={el.id} value={el.id}>{el.name}</option>

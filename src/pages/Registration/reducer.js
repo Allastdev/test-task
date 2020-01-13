@@ -12,6 +12,7 @@ const initialState = {
         }
       }
       case 'SIGN_UP_USER_ERROR': {
+        console.log('action.data.message', action.data.message);
         return {
           ...state,
           errorMessage: action.data.message,
