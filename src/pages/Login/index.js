@@ -3,9 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import * as S from './Login.styles';
-import { validator } from '../../helpers/validator';
+
 
 import { loggedIn } from './actions';
+import { validator } from '../../helpers/validator';
+import { localStorageSet, localStorageGet } from '../../helpers/localStorage';
+
 
 export const Login = (props) => {
   const dispatch = useDispatch();
@@ -28,7 +31,7 @@ export const Login = (props) => {
   const handleSubmit = (values) => {
     dispatch(loggedIn(values));
   };
-
+  
   return (
     <S.Contained>
       <h2>Login</h2>

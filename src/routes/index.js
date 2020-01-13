@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import connect from "react-redux/es/connect/connect";
 
@@ -12,6 +11,7 @@ import {
     Reviews
 } from '../pages/index';
 import { auth } from "../store/Routers/action";
+import { localStorageGet } from '../helpers/localStorage';
 
 class Index extends Component {
  
@@ -23,10 +23,10 @@ class Index extends Component {
     console.log('register_response', register_response)
     let booleanValue  = false;
 
-    if (localStorage.getItem('access_token') && routers.status){
+    if (localStorageGet('access_token', false) && routers.status){
       booleanValue = true;
       auth();
-    } else if (localStorage.getItem('access_token') && !routers.status) {
+    } else if (localStorageGet('access_token', false) && !routers.status) {
       booleanValue = true;
       auth();
     }

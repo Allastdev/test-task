@@ -1,4 +1,5 @@
 import FetchApi from '../../helpers/fetchApi';
+import { localStorageSet } from '../../helpers/localStorage';
 
 export const loggedIn = (values) => async dispatch =>  {
     try{    
@@ -6,7 +7,7 @@ export const loggedIn = (values) => async dispatch =>  {
             email: values.email,
             password: values.password,
         })
-        localStorage.setItem('access_token', response.access_token);
+        localStorageSet('access_token', response.access_token, false);
         
         dispatch({
             type: 'ROUTERS_RENDER',

@@ -1,4 +1,6 @@
 
+import { localStorageGet } from './localStorage';
+
 export default class FetchApi {
     static async post(bool, path, data, options = {}) {
       return await FetchApi.request(bool, path, 'POST', data, options);
@@ -21,7 +23,7 @@ export default class FetchApi {
     }
   
     static async request(bool, path, method, data, options = {},) {
-      const token = localStorage.getItem('access_token');
+      const token = localStorageGet('access_token', false);
 
       let headers = new Headers({
         'Accept': 'application/json',
