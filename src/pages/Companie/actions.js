@@ -17,20 +17,21 @@ export const getCompanie = (id) => async dispatch =>  {
 
 export const addReview = (id, score, review) => async dispatch => {
     try{
-       await FetchApi.post(true, `${process.env.REACT_APP_API_URL}/reviews`, {
+       const response = await FetchApi.post(true, `${process.env.REACT_APP_API_URL}/reviews`, {
             companyId: id, 
             score, 
             review_txt: review
         })
+        console.log('response', response)
         dispatch({
-            type: 'GET_SINGLE_COMPANIE_ERROR',
+            type: 'ADD_REVIEW',
             data: 'Your review has successfully published',
         })
     }catch(e){
-        dispatch({
-            type: 'GET_SINGLE_COMPANIE_ERROR',
-            data: e.message,
-        })
         console.log(e.message);
+        dispatch({
+            type: 'ADD_REVIEW_ERROR',
+            data: e,
+        })
     }
 }

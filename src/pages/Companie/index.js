@@ -3,14 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getCompanie, addReview } from './actions';
 import * as S from './Companie.styles';
 import { logout } from '../../store/Routers/action';
-import { Modal } from '../../components/Modal';
+import { Modal } from '../../components';
 import { LinkBlock } from '../../helpers/styles';
+
 
 export const Companie = (props) => {
   const dispatch = useDispatch();
 
   const [review, setReview] = useState('');
-  const [score, setScore] = useState(null);
+  const [score, setScore] = useState('');
   const [showModal, setShowModal] = useState(false);
 
   const singleCompanyState = useSelector(state => state.singel_companie);
@@ -27,6 +28,7 @@ export const Companie = (props) => {
     dispatch(addReview(props.match.params.id, score, review)); 
     setShowModal(true); 
     setReview('');
+    setScore('')
   }
 
   const logOut = () => {
@@ -35,6 +37,7 @@ export const Companie = (props) => {
   const closeModal = () => {
     setShowModal(false);
   }
+  
 return (
   <>
     <LinkBlock to='/'>Go to Companies</LinkBlock>
@@ -47,8 +50,8 @@ return (
       <p>{singel_companie.user && singel_companie.user.username}</p>
       <p>{singel_companie.user && singel_companie.user.email}</p>
     </S.Container>
-    <S.Review onChange={(e) => setReview(e.target.value)}/>
-    <S.Select onChange={(e) => setScore(e.target.value)}>
+    <S.Review onChange={(e) => setReview(e.target.value)} value={review}/>
+    <S.Select onChange={(e) => setScore(e.target.value)} value={score}>
       <option>Please choose score</option>
         {scores.map(el => (
           <option 

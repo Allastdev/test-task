@@ -1,6 +1,7 @@
 const initialState = {
     errorMessage: '',
-    logged_role: ''
+    logged_role: '',
+    user: {}
   }
     
   export const login = (state=initialState, action) => {
@@ -14,7 +15,8 @@ const initialState = {
       case "LOGGED_USER": {
         return {
           ...state,
-          logged_role: action.data.role
+          logged_role: action.data.role,
+          user: action.data
         }
       }
       default: {

@@ -7,6 +7,7 @@ export const loggedIn = (values) => async dispatch =>  {
           email: values.email,
           password: values.password,
       })
+      console.log('log in response', response)
       localStorageSet('access_token', response.access_token, false);
       localStorageSet('role', response.role, false);
       dispatch({
