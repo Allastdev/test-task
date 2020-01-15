@@ -16,12 +16,9 @@ import { localStorageGet } from '../helpers/localStorage';
 class Index extends Component {
  
   render(){
-    const { registerState: { register_response } } = this.props;
-    const { userProfile } = this.props;
     const { routers } = this.props;
     const { loginState: { logged_role } } = this.props;
-    console.log('logged_role', logged_role)
-    console.log('register_response', register_response)
+    
     let booleanValue  = false;
 
     if (localStorageGet('access_token', false) && routers.status){
@@ -38,9 +35,9 @@ class Index extends Component {
           booleanValue ?
             <Switch>
               <Route exact path='/' component={ logged_role === 'user' ? Companies : Reviews }/>
-              <Route path='/companies/:id' component = { Companie }/>
               <Route path='/profile' component = { Profile }/>
-              {userProfile.role === 'user' ? <Route path='/reviews' component = { Reviews }/> : null}
+              { logged_role === 'user' ? <Route path='/reviews' component = { Reviews }/> : null }
+              { logged_role === 'user' ? (<Route path='/companies/:id' component = { Companie }/>) : (<Route path='/*' render={() => <Redirect to='/' />} />) }
             </Switch> 
             :
             <Switch>

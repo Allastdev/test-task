@@ -46,7 +46,9 @@ export const Profile = () => {
 
   return(
       <>
-        <LinkBlock to='/'>Go to Companies</LinkBlock>
+        <LinkBlock to='/'>
+            {userProfile.role === 'user' ? 'Go to Companies' : 'Go to reviews'}
+        </LinkBlock>
         <S.Wrapper>
             <h1>You can edit your Profile info</h1>
             <S.Form
@@ -74,7 +76,6 @@ export const Profile = () => {
                 handleSubmit,
                 }) => (
                 <S.SimpleForm onSubmit={handleSubmit}>
-                    {userProfile.role === 'user' ? <>
                         <S.Input
                             placeholder='Username'
                             name='username'
@@ -103,7 +104,6 @@ export const Profile = () => {
                             errBorder={errors.password}
                         />
                         {errors.password && <S.Error>{errors.password}</S.Error>}
-                    </> : null }
                     {userProfile.role === 'company' ? <>
                         <S.Input
                             placeholder='Company Name'
@@ -148,7 +148,6 @@ export const Profile = () => {
                         :
                     null
                     }
-
                     <S.SignIn
                         value='Save changes'
                         type='submit' 

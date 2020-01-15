@@ -20,3 +20,6 @@ export const Item = styled(Link)`
       font-size: 28px;
     }
 `
+export const Heading = styled.h1`
+    font-size: 16px;
+`

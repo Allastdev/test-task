@@ -8,13 +8,16 @@ export const getCompanie = (id) => async dispatch =>  {
             data: response,
         })
     }catch(e){
-        console.log(e.message);
+        dispatch({
+            type: 'GET_SINGLE_COMPANIE_ERROR',
+            data: e,
+        })
     }
 }
 
 export const addReview = (id, score, review) => async dispatch => {
     try{
-        await FetchApi.post('http://10.0.13.6:3000/reviews', {
+       await FetchApi.post(true, `${process.env.REACT_APP_API_URL}/reviews`, {
             companyId: id, 
             score, 
             review_txt: review

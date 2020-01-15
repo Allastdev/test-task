@@ -2,20 +2,15 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import * as S from './Login.styles';
-
-
 import { loggedIn } from './actions';
 import { validator } from '../../helpers/validator';
-import { localStorageSet, localStorageGet } from '../../helpers/localStorage';
+import * as S from './Login.styles';
 
-
-export const Login = (props) => {
+export const Login = () => {
   const dispatch = useDispatch();
 
   const loginState = useSelector( state => state.login);
-  console.log('errorMessage', loginState.errorMessage);
-  
+
   const handleValidate = (values) => {
     const {
       isEmailValid,

@@ -2,7 +2,7 @@ import FetchApi from '../../helpers/fetchApi';
 
 export const getProfile = () => async dispatch =>  {
     try{    
-        const response = await FetchApi.get(true, `${process.env.REACT_APP_API_URL}`,)
+        const response = await FetchApi.get(true, `${process.env.REACT_APP_API_URL}/users/profile`,)
         dispatch({
             type: 'GET_PROFILE',
             data: response,
@@ -17,7 +17,7 @@ export const getProfile = () => async dispatch =>  {
 
 export const editUserInfo = (values) => async dispatch => {
     try{
-      await FetchApi.put('http://10.0.13.6:3000/users/profile', {
+      await FetchApi.put(`${process.env.REACT_APP_API_URL}/users/profile`, {
         nickname: values.username,
         password: values.password, 
         email: values.email,

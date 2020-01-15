@@ -1,5 +1,6 @@
 const initialState = {
-    companies: []
+    companies: [],
+    errorMessage: ''
   }
     
   export const companies = (state=initialState, action) => {
@@ -8,6 +9,12 @@ const initialState = {
         return {
           ...state,
           companies: action.data
+        }
+      }
+      case "GET_COMPANIES_ERROR": {
+        return {
+          ...state,
+          errorMessage: action.data.message
         }
       }
       default: {

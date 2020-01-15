@@ -1,5 +1,6 @@
 const initialState = {
     singel_companie: [],
+    getErrorMessage: '',
     errorMessage: ''
   }
     
@@ -9,6 +10,12 @@ const initialState = {
         return {
           ...state,
           singel_companie: action.data,
+        }
+      }
+      case 'GET_SINGLE_COMPANIE_ERROR': {
+        return {
+          ...state,
+          getErrorMessage: action.data.message
         }
       }
       case 'GET_SINGLE_COMPANIE_ERROR': {

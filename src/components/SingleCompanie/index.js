@@ -7,7 +7,7 @@ export const SingleCompanie = (props) => {
 
     return(
         <S.Item to={`/companies/${id}`}>
-          <h1>{name}</h1>
+          <S.Heading>{name}</S.Heading>
           <p>{address}</p>
         </S.Item>
     )

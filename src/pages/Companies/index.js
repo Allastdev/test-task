@@ -15,10 +15,14 @@ export const Companies = () => {
   }, []);
 
   const companiesState = useSelector((state) => state.companies);
+  
   const { companies, error } = companiesState;
+
   const logOut = () => {
     dispatch(logout())
   }
+
+  console.log('companies', companies)
   return (
       <>
         <LinkBlock to='/profile'>Go to Profile</LinkBlock>

@@ -8,7 +8,10 @@ export const getCompanies = () => async dispatch =>  {
             data: response,
         })
     }catch(e){
-        console.log(e.message);
+        dispatch({
+            type: 'GET_COMPANIES_ERROR',
+            data: e,
+        })
     }
 }
 
