@@ -25,6 +25,7 @@ export const Profile = () => {
   const productsState = useSelector(state => state.products);
 
   const { userProfile }  = userProfileState;
+  console.log('userProfile', userProfile);
 
   const handleValidate = (values) => {
     const { 
@@ -80,7 +81,7 @@ export const Profile = () => {
                             placeholder='Username'
                             name='username'
                             onBlur={handleBlur}
-                            value={userProfile.username}
+                            // value={userProfile.username}
                             onChange={handleChange}
                             errBorder={errors.username}
                         />
@@ -90,7 +91,7 @@ export const Profile = () => {
                             name='email'
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            value={userProfile.email}
+                            // value={userProfile.email}
                             errBorder={errors.email}
                         />
                         {errors.email && <S.Error>{errors.email}</S.Error>}
@@ -100,7 +101,7 @@ export const Profile = () => {
                             name='password'
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            value={userProfile.password}
+                            // value={userProfile.password}
                             errBorder={errors.password}
                         />
                         {errors.password && <S.Error>{errors.password}</S.Error>}
@@ -133,7 +134,6 @@ export const Profile = () => {
                             </option>
                         ))}
                         </S.Select>
-                    
                         <S.Select onChange={handleChange} name='products_id'>
                              <option>Please choose products</option>
                             {productsState.products && productsState.products.map(el => (

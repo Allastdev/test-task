@@ -7,6 +7,7 @@ export const auth = () => ({
 
 export const logout = () => dispatch => {
   localStorageRemove('access_token');
+  localStorageRemove('role');
   dispatch ({
       type: 'LOG_OUT',
       value: false,

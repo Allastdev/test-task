@@ -15,7 +15,7 @@ const initialState = {
       case 'GET_SINGLE_COMPANIE_ERROR': {
         return {
           ...state,
-          getErrorMessage: action.data.message
+          getErrorMessage: action.datemaila.message
         }
       }
       case 'GET_SINGLE_COMPANIE_ERROR': {

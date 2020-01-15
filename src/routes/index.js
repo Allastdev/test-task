@@ -17,7 +17,6 @@ class Index extends Component {
  
   render(){
     const { routers } = this.props;
-    const { loginState: { logged_role } } = this.props;
     
     let booleanValue  = false;
 
@@ -29,15 +28,19 @@ class Index extends Component {
       auth();
     }
 
+    
+    const role = localStorageGet('role', false)
+
     return(
       <BrowserRouter>
         {
           booleanValue ?
             <Switch>
-              <Route exact path='/' component={ logged_role === 'user' ? Companies : Reviews }/>
+              <Route exact path='/' component={ role === 'user' ? Companies : Reviews }/>
               <Route path='/profile' component = { Profile }/>
-              { logged_role === 'user' ? <Route path='/reviews' component = { Reviews }/> : null }
-              { logged_role === 'user' ? (<Route path='/companies/:id' component = { Companie }/>) : (<Route path='/*' render={() => <Redirect to='/' />} />) }
+              { role === 'user' ? <Route path='/reviews' component = { Reviews }/> : null }
+              { role === 'user' ? (<Route path='/companies/:id' component = { Companie }/>) : (<Route path='/*' render={() => <Redirect to='/' />} />) }
+              {/* <Route path='/companies/:id' component = { logged_role === 'user' ? Companie : Reviews}/> */}
             </Switch> 
             :
             <Switch>
