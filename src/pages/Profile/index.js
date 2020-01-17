@@ -35,7 +35,7 @@ export const Profile = () => {
     } = validator;
 
     isEmailValid(values.email);
-    isPasswordValid(values.password);
+    // isPasswordValid(values.password);
     isUsername(values.username);
     return errors;
   }
@@ -43,7 +43,6 @@ export const Profile = () => {
   const handleSubmit = (values) => {
     dispatch(editUserInfo(values));
   }
-
   return(
       <>
         <LinkBlock to='/'>
@@ -55,10 +54,10 @@ export const Profile = () => {
                 validateOnChange={false}
                 validateOnBlur={false}
                 initialValues={{
-                email: '', 
-                password: '', 
-                username: '', 
-                role: '', 
+                email: userProfile.email, 
+                password: userProfile.password, 
+                username: userProfile.username, 
+                role: userProfile.role, 
                 company_name: '', 
                 company_address: '', 
                 categories_id: '', 
@@ -80,7 +79,7 @@ export const Profile = () => {
                             placeholder='Username'
                             name='username'
                             onBlur={handleBlur}
-                            // value={userProfile.username}
+                            value={values.username}
                             onChange={handleChange}
                             errBorder={errors.username}
                         />
@@ -90,7 +89,7 @@ export const Profile = () => {
                             name='email'
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            // value={userProfile.email}
+                            value={values.email}
                             errBorder={errors.email}
                         />
                         {errors.email && <S.Error>{errors.email}</S.Error>}
@@ -100,7 +99,7 @@ export const Profile = () => {
                             name='password'
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            // value={userProfile.password}
+                            value={values.password}
                             errBorder={errors.password}
                         />
                         {errors.password && <S.Error>{errors.password}</S.Error>}
@@ -111,7 +110,7 @@ export const Profile = () => {
                             name='company_name'
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            value={userProfile.company_name}
+                            value={values.company_name}
                             errBorder={errors.company_name}
                         />  
                         <S.Input
@@ -120,7 +119,7 @@ export const Profile = () => {
                             name='company_address'
                             onChange={handleChange}
                             onBlur={handleBlur}
-                            value={userProfile.company_address}
+                            value={values.company_address}
                             errBorder={errors.company_address}
                         />  
                         <S.Select onChange={handleChange} name='categories_id'>

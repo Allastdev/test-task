@@ -17,10 +17,11 @@ export const getProfile = () => async dispatch =>  {
 
 export const editUserInfo = (values) => async dispatch => {
     try{
-      await FetchApi.put(`${process.env.REACT_APP_API_URL}/users/profile`, {
-        nickname: values.username,
+      const response = await FetchApi.put(`${process.env.REACT_APP_API_URL}/users/profile`, {
+        name: values.username,
         password: values.password, 
         email: values.email,
+        address: values.company_address,
       });
      dispatch({
        type: 'USER_CREDENTIALS',
