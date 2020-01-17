@@ -25,7 +25,6 @@ export const Profile = () => {
   const productsState = useSelector(state => state.products);
 
   const { userProfile }  = userProfileState;
-  console.log('userProfile', userProfile);
 
   const handleValidate = (values) => {
     const { 

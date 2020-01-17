@@ -7,7 +7,6 @@ export const getReviews = () => async dispatch =>  {
             type: 'GET_REVIEWS',
             data: response,
         })
-        console.log('response', response);
     }catch(e){
         dispatch({
             type: 'GET_REVIEWS_ERROR',

@@ -22,7 +22,6 @@ export const Companies = () => {
     dispatch(logout())
   }
 
-  console.log('companies', companies)
   return (
       <>
         <LinkBlock to='/profile'>Go to Profile</LinkBlock>

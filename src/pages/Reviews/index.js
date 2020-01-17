@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect} from 'react';
+import { useDispatch } from 'react-redux';
 
 import { logout } from '../../store/Routers/action';
 import { LinkBlock } from '../../helpers/styles';
@@ -9,10 +9,7 @@ import {getReviews} from './actions';
 
 export const Reviews = () => {
     const dispatch = useDispatch();
-
-    const loginState = useSelector(state => state.login);
    
-    const {user: {id}} = loginState;
     useEffect(() => {
       dispatch(getReviews());
     }, [])
